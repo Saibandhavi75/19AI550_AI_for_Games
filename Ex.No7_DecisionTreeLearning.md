@@ -3,76 +3,86 @@
 ### REGISTER NUMBER : 212221240006
 ### Name: Aruru Sai Bandhavi
 ### AIM: 
-Write a Alpha beta pruning algorithm to find the optimal value of MAX Player from the given graph.
+Design a decision tree for following data. 
+
+Healthy, In Cover, With Ammo -> Attack
+
+Hurt, In Cover, With Ammo -> Attack
+
+Healthy, In Cover, Empty -> Defend
+
+Hurt, In Cover, Empty -> Defend
+
+Hurt, Exposed, With Ammo -> Defend
 ### Steps:
 1. Start the program
-2. Initially  assign MAX and MIN value as 1000 and -1000.
-3.  Define the minimax function  using alpha beta pruning
-4.  If maximum depth is reached then return the score value of leaf node. [depth taken as 3]
-5.  In Max player turn, assign the alpha value by finding the maximum value by calling the minmax function recursively.
-6.  In Min player turn, assign beta value by finding the minimum value by calling the minmax function recursively.
-7.  Specify the score value of leaf nodes and Call the minimax function.
-8.  Print the best value of Max player.
-9.  Stop the program. 
+2. import the necessary packages 
+3. Design a training data and test data 
+4. Create a decision tree classifier model
+5. Output the predictions 
+6. Visualize the decision tree
 
 ### Program:
 
-~~~
-# Define a large negative and positive value to represent infinity
-INF = float('inf')
+```py
+from sklearn.tree import DecisionTreeClassifier
+from sklearn import tree
+import pandas as pd
 
+# Data: [Health, Cover, Ammo, Exposed]
+# Health: 1 for Healthy, 0 for Hurt
+# Cover: 1 for In Cover, 0 for Exposed
+# Ammo: 1 for With Ammo, 0 for Empty
+# Exposed: 1 for Exposed, 0 for In Cover
+# Actions: 0 for Defend, 1 for Attack
 
-# Alpha-Beta Pruning function
-def alpha_beta_pruning(depth, node_index, maximizing_player, values, alpha, beta):
-    # Base case: leaf node is reached
-    if depth == 3:
-        return values[node_index]
+# Define the training data and corresponding labels (actions)
+data = [
+    [1, 1, 1],  # Healthy, In Cover, With Ammo -> Attack
+    [0, 1, 1],  # Hurt, In Cover, With Ammo -> Attack
+    [1, 1, 0],  # Healthy, In Cover, Empty -> Defend
+    [0, 1, 0],  # Hurt, In Cover, Empty -> Defend
+    [0, 0, 1],  # Hurt, Exposed, With Ammo -> Defend
+]
 
-    if maximizing_player:
-        max_eval = -INF
-        # Recur for the two children of the current node
-        for i in range(2):
-            eval = alpha_beta_pruning(depth + 1, node_index * 2 + i, False, values, alpha, beta)
-            max_eval = max(max_eval, eval)
-            alpha = max(alpha, eval)
+# Labels: 1 for Attack, 0 for Defend
+labels = [1, 1, 0, 0, 0]
 
-            # Prune the branch
-            if beta <= alpha:
-                break
-        return max_eval
-    else:
-        min_eval = INF
-        # Recur for the two children of the current node
-        for i in range(2):
-            eval = alpha_beta_pruning(depth + 1, node_index * 2 + i, True, values, alpha, beta)
-            min_eval = min(min_eval, eval)
-            beta = min(beta, eval)
+# Create a Decision Tree Classifier model
+clf = DecisionTreeClassifier(criterion="entropy")
 
-            # Prune the branch
-            if beta <= alpha:
-                break
-        return min_eval
+# Train the model
+clf.fit(data, labels)
 
+# Make predictions (example data points)
+test_data = [
+    [1, 1, 1],  # Healthy, In Cover, With Ammo
+    [0, 0, 1],  # Hurt, Exposed, With Ammo
+    [1, 1, 0],  # Healthy, In Cover, Empty
+]
 
-# Driver code
-if __name__ == "__main__":
-    # This is the terminal/leaf node values of the game tree
-    values = [3, 5, 6, 9, 1, 2, 0, -1]
+# Predict actions for the test data
+predictions = clf.predict(test_data)
 
-    print("Optimal value:", alpha_beta_pruning(0, 0, True, values, -INF, INF))
-~~~
+# Output the predictions
+for i, pred in enumerate(predictions):
+    action = "Attack" if pred == 1 else "Defend"
+    print(f"Test case {i+1}: Predicted action is {action}")
 
+# Optional: Visualize the decision tree
+import matplotlib.pyplot as plt
 
+plt.figure(figsize=(10, 6))
+tree.plot_tree(clf, feature_names=['Health', 'Cover', 'Ammo', 'Exposed'], class_names=['Defend', 'Attack'], filled=True)
+plt.show()
 
-
-
+````
 
 
 ### Output:
 
-![image](https://github.com/user-attachments/assets/52567825-9abd-47b0-9243-34e732bb1ae5)
-
+![image](https://github.com/user-attachments/assets/6eaeceef-62f3-4a17-af8d-d6f9a6288945)
 
 
 ### Result:
-Thus the best score of max player was found using Alpha Beta Pruning.
+Thus the decision tree is designed for the given data.

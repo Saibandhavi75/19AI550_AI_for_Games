@@ -1,6 +1,6 @@
 # Ex.No: 7   Implementation of Alpha Beta Pruning 
 ### DATE:                                                                            
-### REGISTER NUMBER : 2122212400206
+### REGISTER NUMBER : 212221240006
 ### Name: Aruru Sai Bandhavi
 ### AIM: 
 Write a Alpha beta pruning algorithm to find the optimal value of MAX Player from the given graph.

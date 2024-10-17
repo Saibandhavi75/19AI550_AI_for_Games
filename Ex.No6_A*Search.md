@@ -50,7 +50,8 @@ print(minimax(0, 0, True, scores, treeDepth))
 
 
 ### Output:
-<img width="1128" alt="image" src="https://github.com/user-attachments/assets/9a3a4aae-a520-4122-b3fe-b40b65e840b9">
+![image](https://github.com/user-attachments/assets/14ca15ad-d7ac-4012-be32-ca7789c8ce15)
+
 
 ### Result:
 Thus the optimum value of max player was found using minimax search.

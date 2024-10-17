@@ -1,4 +1,4 @@
-# Ex.No: 7   Implementation of Alpha Beta Pruning 
+# Ex.No: 7   Implementation of Decision Tree Learning
 ### DATE:                                                                            
 ### REGISTER NUMBER : 212221240006
 ### Name: Aruru Sai Bandhavi

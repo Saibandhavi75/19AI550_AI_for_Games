@@ -1,20 +1,31 @@
 # Ex.No: 11  Mini Project 
 ### DATE:                                                                            
-### REGISTER NUMBER : 
+### REGISTER NUMBER : 212221240006
 ### AIM: 
 To write a Python program to simulate the game using pygame to develop a side-scrolling obstacle game inspired by Flappy Bird.
 ### Algorithm:
 Step 1: Start by importing Pygame and initializing it to enable game functionalities like graphics, sound, and event handling.
+
 Step 2: Define constants for the game screen dimensions, bird size, pipe dimensions, gravity, flap strength, and frames per second (FPS).
+
 Step 3: Set up the game screen with specified width and height, assign a window caption, and define colors for various game elements.
+
 Step 4: Load images for the bird and background, then scale them to fit the specified dimensions.
+
 Step 5: Set the bird’s initial vertical position and velocity, create an empty list for pipes, set the score to zero, and initialize a game-over flag.
+
 Step 6: Implement helper functions for game mechanics, including creating pipes with gaps, resetting the game, drawing the bird and pipes on the screen, and moving pipes.
+
 Step 7: Move each pipe leftward, remove pipes that exit the screen, and spawn new pipes; increase the score each time the player passes a pipe.
+
 Step 8: Detect collisions between the bird and the top/bottom screen boundaries, or between the bird and pipes; if a collision occurs, end the game.
+
 Step 9: In the main game loop, detect if the player presses the spacebar and apply a flap (upward force) to the bird by setting its velocity to a negative value.
+
 Step 10: Update the bird’s vertical position by applying gravity, redraw all game elements, display the score, and update the screen.
+
 Step 11: Control the game loop with a fixed frame rate (FPS) to ensure consistent gameplay speed and responsiveness.
+
 Step 12: When a collision is detected, display a "Game Over" message with the final score, wait a few seconds, and close the game window.
 
 ### Program:
